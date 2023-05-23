@@ -6,6 +6,7 @@ public class playermovement : MonoBehaviour
 {
     public float speed;
     public float grounddistance;
+    public float jumpForce;
 
     public LayerMask terrainLayer;
     public Rigidbody rb;
@@ -31,12 +32,11 @@ public class playermovement : MonoBehaviour
                 transform.position = movePos;
             }
         }
-
+        float jump = Input.GetAxis("Jump");
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(x, 0, y);
+        Vector3 moveDirection = new Vector3(x, jump, y);
         rb.velocity = moveDirection * speed;
-
         if(x != 0 && x > 0)
         {
             sr.flipX = true;
