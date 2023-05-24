@@ -20,6 +20,7 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Mathf.Clamp(grounddistance, 0.54f, 1.39f);
         RaycastHit hit;
         Vector3 castPos = transform.position;
         castPos.y += 1;
@@ -35,7 +36,7 @@ public class playermovement : MonoBehaviour
         float jump = Input.GetAxis("Jump");
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(x, jump, y);
+        Vector3 moveDirection = new Vector3(x, 0, y);
         rb.velocity = moveDirection * speed;
         if(x != 0 && x > 0)
         {
