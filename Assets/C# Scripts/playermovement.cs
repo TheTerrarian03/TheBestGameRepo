@@ -1,50 +1,83 @@
+// co-written by ChatGPT
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class playermovement : MonoBehaviour
 {
-    public float speed;
-    public float grounddistance;
-    public float jumpForce;
+    private float moveSpeed = 4f;           // Speed at which the player moves
+    private float jumpForce = 3.5f;           // Force applied when the player jumps
+    private int maxJumps = 1;               // Maximum number of jumps allowed
+    private float groundThreshold = 0.6f;  // Max Distance to detect ground below player
 
-    public LayerMask terrainLayer;
-    public Rigidbody rb;
-    public SpriteRenderer sr;
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody playerRigidbody;
+    private Vector3 movement;
+    private int jumpsRemaining;
+    private bool isGrounded;
+
+    private void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        Mathf.Clamp(grounddistance, 0.54f, 1.39f);
+        jumpsRemaining = maxJumps;
+    }
+
+    private void Update()
+    {
+        // ----- GET USER X Y INPUT -----
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+
+        // ----- MAKE NEW MOVEMENT VECTOR -----
+        movement = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+        // ----- APPLY JUMP IF NEEDED -----
+        if (Input.GetButtonDown("Jump") && jumpsRemaining > 0)
+        {
+            Jump();
+        }
+
+        // ----- DETECT GROUND -----
+        detectGround();
+    }
+
+    private void FixedUpdate()
+    {
+        // Move the player
+        MovePlayer();
+    }
+
+    private void MovePlayer()
+    {
+        // scale movement by player speed
+        Vector3 desiredVelocity = movement * moveSpeed;
+        // set player velocity
+        playerRigidbody.velocity = new Vector3(desiredVelocity.x, playerRigidbody.velocity.y, desiredVelocity.z);
+    }
+
+    private void Jump()
+    {
+        // add a force to the player
+        playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        // decrement the jumps remaining
+        jumpsRemaining--;
+    }
+
+    private void detectGround()
+    {
         RaycastHit hit;
-        Vector3 castPos = transform.position;
-        castPos.y += 1;
-        if(Physics.Raycast(castPos, -transform.up, out hit, Mathf.Infinity, terrainLayer))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundThreshold))
         {
-            if(hit.collider != null)
-            {
-                Vector3 movePos = transform.position;
-                movePos.y = hit.point.y + grounddistance;
-                transform.position = movePos;
-            }
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
         }
-        float jump = Input.GetAxis("Jump");
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(x, 0, y);
-        rb.velocity = moveDirection * speed;
-        if(x != 0 && x > 0)
+        else
         {
-            sr.flipX = true;
+            isGrounded = false;
         }
-        else if(x != 0 && x > 0)
-        {
-            sr.flipX = true;
-        }
+        //Debug.DrawRay(transform.position, Vector3.down * groundThreshold, Color.red);
     }
 }

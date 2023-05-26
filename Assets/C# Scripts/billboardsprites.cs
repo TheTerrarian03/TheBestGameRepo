@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class billboardsprites : MonoBehaviour
 {
-    Camera mainCamera;
-    void Start()
+    public Transform target;  // The object the sprite will look at
+    public bool rotateOnlyY = false;  // Whether to only rotate the y-axis towards the target
+
+    private void LateUpdate()
     {
-        mainCamera = Camera.main;
-    }
-    void LateUpdate()
-    {
-        transform.LookAt(mainCamera.transform);
-        transform.Rotate(0, 180, 0);
+        if (target != null)
+        {
+            Vector3 targetPosition;
+            if (rotateOnlyY)
+            {
+                targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            }
+            else
+            {
+                targetPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
+            }
+            transform.LookAt(targetPosition);
+
+        }
     }
 }
