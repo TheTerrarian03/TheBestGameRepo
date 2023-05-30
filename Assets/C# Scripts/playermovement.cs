@@ -6,7 +6,7 @@ using UnityEngine;
 public class playermovement : MonoBehaviour
 {
     private float moveSpeed = 4f;           // Speed at which the player moves
-    private float jumpForce = 3.5f;           // Force applied when the player jumps
+    private float jumpForce = 4.5f;           // Force applied when the player jumps
     private int maxJumps = 1;               // Maximum number of jumps allowed
     private float groundThreshold = 0.6f;  // Max Distance to detect ground below player
 
