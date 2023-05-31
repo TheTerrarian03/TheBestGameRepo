@@ -58,17 +58,13 @@ public class playermovement : MonoBehaviour
     private void ApplyGravity()
     {
         vertSpeed -= gravity;
-        // cap speed if grounded
-        if (isGrounded)
-        {
-            vertSpeed = Mathf.Max(vertSpeed, -0.1f);
-        }
     }
 
     private void MovePlayer()
     {
         // scale movement by player speed
         Vector3 desiredVelocity = movement * moveSpeed;
+        desiredVelocity *= Time.deltaTime;
         // set player velocity
         charController.Move(desiredVelocity);
     }
