@@ -10,7 +10,7 @@ public class playermovement : MonoBehaviour
     private float vertSpeed;
     private float gravity = -50f;
 
-    private int MAX_JUMPS = 2;
+    private int MAX_JUMPS = 4;
     private int jumpsLeft;
 
     private void Awake()
