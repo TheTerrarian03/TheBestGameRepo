@@ -26,7 +26,9 @@ public class EnemySpawnManager : MonoBehaviour
         {
             spawnDelay = Random.Range(2, 4);
             yield return new WaitForSeconds(spawnDelay);
-            Instantiate(enemy);
+            Instantiate(enemy,new Vector3(-0.8664f,3.29f,-22.3994f));
+
         }
     }
 }
+//https://stackoverflow.com/questions/40782245/convert-vector3-to-transform
