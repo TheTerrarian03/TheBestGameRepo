@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreText;
 
+    [SerializeField] ScoreManager scoreManager;
+
     int score = 0;
 
     // Start is called before the first frame update
