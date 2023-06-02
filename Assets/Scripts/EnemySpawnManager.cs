@@ -26,7 +26,7 @@ public class EnemySpawnManager : MonoBehaviour
         {
             spawnDelay = Random.Range(2, 4);
             yield return new WaitForSeconds(spawnDelay);
-            Instantiate(enemy, new Vector3(-0.8664f, 3.29f, -22.3994f));
+            Instantiate(enemy, new Vector3(-0.8664f, 3.29f, -22.3994f),Quaternion.Euler(Vector3.up));
         }
     }
 }
