@@ -20,6 +20,7 @@ public class PancakeFlip : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             click = true;
+            
         }
         else
         {
