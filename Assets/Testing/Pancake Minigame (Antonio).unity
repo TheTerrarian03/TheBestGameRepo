@@ -369,10 +369,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1355836265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e8e2205a3b90c149bb5e0606990c98b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1766803437118485ab1c07f93ece2f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1249256594}
+  healthText: {fileID: 0}
+  pointsText: {fileID: 1249256594}
+  playerInfoManager: {fileID: 11400000, guid: 00eb5efeede2fbf489bbf0c1e9e5e4d0, type: 2}
 --- !u!1 &1480473519
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +633,7 @@ GameObject:
   - component: {fileID: 2049571524}
   - component: {fileID: 2049571523}
   - component: {fileID: 2049571526}
+  - component: {fileID: 2049571527}
   m_Layer: 0
   m_Name: Pancake
   m_TagString: Pancake
@@ -739,3 +742,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   click: 0
+--- !u!114 &2049571527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049571522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dcc057a0185486b9eb8003c196a4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adjustAmount: 1
+  playerManager: {fileID: 11400000, guid: 00eb5efeede2fbf489bbf0c1e9e5e4d0, type: 2}
