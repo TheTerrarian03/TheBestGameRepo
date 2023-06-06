@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController charController;
     private float vertSpeed;
     private int jumpsLeft;
+    private Vector3 lastMoveSpeed;
 
     // ----- Constant Variables ------
     private const float SPEED               = 6.0f;
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         // convert from local to world space, and move
         movement = transform.TransformDirection(movement);
         charController.Move(movement);
+        lastMoveSpeed = movement;
 
         clampZDepth();
     }
@@ -84,5 +86,10 @@ public class PlayerMovement : MonoBehaviour
             vertSpeed = JUMP_FORCE;
             jumpsLeft -= 1;
         }
+    }
+
+    public Vector3 getLastSpeed()
+    {
+        return lastMoveSpeed;
     }
 }
