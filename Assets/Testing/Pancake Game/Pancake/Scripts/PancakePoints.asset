@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4107329793b634ea3beb1f51bd7576b5, type: 3}
-  m_Name: PlayerInfoManager
+  m_Name: PancakePoints
   m_EditorClassIdentifier: 
   health: 0
   points: 0

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class ScoreManager : ScriptableObject
 {
     // ----- Current variables -----
-    [SerializeField]
+    [SerializeField] 
     private int points;
 
     // ----- Events -----
