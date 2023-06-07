@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Best one so far
 public class AIMovement : MonoBehaviour
 {// References the enemy's Rigidbody2D component
     private Rigidbody2D enemyRigidbody;
