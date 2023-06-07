@@ -1,4 +1,6 @@
 using UnityEngine.Events;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PancakeFlip : MonoBehaviour
@@ -22,6 +24,8 @@ public class PancakeFlip : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             click = true;
+            StartCoroutine(UpdatePoints());
+            
         }
         else
         {
@@ -37,5 +41,10 @@ public class PancakeFlip : MonoBehaviour
         {
             animator.SetBool("Click", true);
         }
+    }
+    IEnumerator UpdatePoints()
+    {
+        yield return new WaitForSeconds(2f);
+        playerInfoManager.adjustPoints(1);
     }
 }
