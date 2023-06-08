@@ -25,7 +25,6 @@ public class PancakeFlip : MonoBehaviour
         {
             click = true;
             StartCoroutine(UpdatePoints());
-            
         }
         else
         {
@@ -44,7 +43,9 @@ public class PancakeFlip : MonoBehaviour
     }
     IEnumerator UpdatePoints()
     {
-        yield return new WaitForSeconds(2f);
-        playerInfoManager.adjustPoints(1);
+        yield return new WaitForSeconds(0.5f);
+        playerInfoManager.adjustPoints(1); ;
     }
 }
+
+//I need help. I can't figure out how to turn off inputs.
