@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 0}
   pointsText: {fileID: 1249256594}
+  tooltipText: {fileID: 0}
   playerInfoManager: {fileID: 11400000, guid: 00eb5efeede2fbf489bbf0c1e9e5e4d0, type: 2}
 --- !u!1 &1480473519
 GameObject:
