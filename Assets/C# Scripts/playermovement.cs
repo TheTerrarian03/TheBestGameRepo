@@ -8,16 +8,18 @@ public class PlayerMovement : MonoBehaviour
     private int jumpsLeft;
     private Vector3 lastMoveSpeed;
 
+    private const float SCALE = 0.4f;
+
     // ----- Constant Variables ------
-    private const float SPEED               = 6.0f;
-    private const float JUMP_FORCE          = 13.0f;
-    private const float GRAVITY             = -45f;
+    private const float SPEED               = 6.0f * SCALE;
+    private const float JUMP_FORCE          = 13.0f * SCALE;
+    private const float GRAVITY             = -45f * SCALE;
     private const float GROUNDED_VERT_FORCE = -1.0f;
     private int MAX_JUMPS                   = 2;
 
     // ----- Constants, For Positioning -----
-    private const float MAX_Z_DEPTH = -1.5f;
-    private const float MIN_Z_DEPTH = 1.125f;
+    private const float MAX_Z_DEPTH = -3.1f;
+    private const float MIN_Z_DEPTH = 0.25f;
 
     // ----- Unity Methods -----
     private void Awake()

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -8,6 +10,8 @@ public class UIManager : MonoBehaviour
     private TMP_Text healthText;
     [SerializeField]
     private TMP_Text pointsText;
+    [SerializeField]
+    private TMP_Text tooltipText;
 
     // ----- Player Manager -----
     [SerializeField]
@@ -19,6 +23,7 @@ public class UIManager : MonoBehaviour
         // setup initial text
         setHealthText(playerInfoManager.getHealth());
         setPointsText(playerInfoManager.getPoints());
+        setTooltipText("");
     }
 
     private void OnEnable()
@@ -49,5 +54,23 @@ public class UIManager : MonoBehaviour
         // set points text if the object exists
         if (pointsText != null)
             pointsText.text = "Points: " + amount.ToString();
+    }
+
+    // ----- Tooltip Methods -----
+    public void setTooltipText(string tip, float lifetimeSeconds = -1)
+    {
+        if (tooltipText == null)
+            return;
+
+        tooltipText.text = tip;
+
+        if (lifetimeSeconds > 0)
+            StartCoroutine(clearTooltipAfterSeconds(lifetimeSeconds));
+    }
+
+    private IEnumerator clearTooltipAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        setTooltipText("");
     }
 }
