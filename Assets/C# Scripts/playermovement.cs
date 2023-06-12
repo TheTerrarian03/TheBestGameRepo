@@ -94,4 +94,14 @@ public class PlayerMovement : MonoBehaviour
     {
         return lastMoveSpeed;
     }
+
+    public Vector3 getLastSpeedScaled()
+    {
+        return getLastSpeed() / SPEED / Time.deltaTime;
+    }
+
+    public bool getIsJumping()
+    {
+        return vertSpeed > 0;
+    }
 }

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8408137304903479803}
   - component: {fileID: 4385541857593143863}
   - component: {fileID: 3266978956456604845}
+  - component: {fileID: 4284261509156249094}
   m_Layer: 0
-  m_Name: PlayerSpriteSheet_0
+  m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,6 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4284261509156249094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833543749830234046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9798a11c3365d4fc7a0282cb21119d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 8519246326060884162}
 --- !u!1 &8519246326060884190
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +131,6 @@ GameObject:
   - component: {fileID: 8519246326060884191}
   - component: {fileID: 8519246326060884162}
   - component: {fileID: 1963596067093675848}
-  - component: {fileID: 3394878802620911457}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -171,17 +184,3 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.05, z: 0}
---- !u!114 &3394878802620911457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8519246326060884190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9798a11c3365d4fc7a0282cb21119d12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3266978956456604845}
-  playerMovement: {fileID: 8519246326060884162}

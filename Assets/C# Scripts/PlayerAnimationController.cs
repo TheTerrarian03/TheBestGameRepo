@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    public Animator animator;
-    public PlayerMovement playerMovement;
+    [SerializeField]
+    private PlayerMovement playerMovement;
 
-    // Start is called before the first frame update
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // PlayerMovement and PlayerAttack need to be passed in manually
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Vector3 lastMoveSpeed = playerMovement.getLastSpeed();
-        animator.SetFloat("PlayerSpeed", lastMoveSpeed.x);
+        // ----- XZ Movement -----
+        Vector3 lastMoveSpeed = playerMovement.getLastSpeedScaled();
+        float moveSpeed;
+
+        if (Mathf.Abs(lastMoveSpeed.z) > Mathf.Abs(lastMoveSpeed.x))
+            moveSpeed = lastMoveSpeed.z;
+        else
+            moveSpeed = lastMoveSpeed.x;
+
+        spriteRenderer.flipX = moveSpeed < 0 ? true : false;
+        animator.SetFloat("PlayerSpeed", Mathf.Abs(moveSpeed));
+
+        // ----- Jumping -----
+        animator.SetBool("IsJumping", playerMovement.getIsJumping());
     }
 }
