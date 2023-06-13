@@ -18,8 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private int MAX_JUMPS                   = 2;
 
     // ----- Constants, For Positioning -----
-    private const float MAX_Z_DEPTH = -3.1f;
-    private const float MIN_Z_DEPTH = 0.25f;
+    [SerializeField]
+    private float MAX_Z_DEPTH = -1;
+    [SerializeField]
+    private float MIN_Z_DEPTH = 1f;
 
     // ----- Unity Methods -----
     private void Awake()

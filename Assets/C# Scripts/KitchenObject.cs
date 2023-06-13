@@ -75,7 +75,6 @@ public class KitchenObject : MonoBehaviour
                 else
                     setRotation(-targetRotation);
             }
-            Debug.Log(atInitialRotation);
         }
     }
 

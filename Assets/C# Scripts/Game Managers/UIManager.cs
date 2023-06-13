@@ -13,6 +13,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TMP_Text tooltipText;
 
+    // ---- Customization options -----
+    [SerializeField]
+    private int pointGoal;
+    [SerializeField]
+    private int fullHealth;
+    [SerializeField]
+    private bool doColors = true;
+
     // ----- Player Manager -----
     [SerializeField]
     private PlayerInfoManagerScriptableObject playerInfoManager;
@@ -45,7 +53,23 @@ public class UIManager : MonoBehaviour
     {
         // set health text if the object exists
         if (healthText != null)
-            healthText.text = "Health: " + amount.ToString();
+        {
+            // text
+            if (fullHealth > 0)
+                healthText.text = "Health: " + amount.ToString() + "/" + fullHealth.ToString();
+            else
+                healthText.text = "Health: " + amount.ToString();
+
+            // colors
+            if (doColors)
+                if (amount == fullHealth)
+                    healthText.color = new Color32(25, 255, 25, 255);
+                else if (amount < 0)
+                    healthText.color = new Color32(255, 25, 25, 255);
+                else
+                    healthText.color = new Color32(255, 128, 25, 255);
+        }
+
     }
 
     // ----- Points Methods -----
@@ -53,7 +77,22 @@ public class UIManager : MonoBehaviour
     {
         // set points text if the object exists
         if (pointsText != null)
-            pointsText.text = "Points: " + amount.ToString();
+        {
+            // text
+            if (pointGoal > 0)
+                pointsText.text = "Points: " + amount.ToString() + "/" + pointGoal.ToString();
+            else
+                pointsText.text = "Points: " + amount.ToString();
+
+            // colors
+            if (doColors)
+                if (amount >= pointGoal)
+                    pointsText.color = new Color32(25, 255, 25, 255);
+                else if (amount == 0)
+                    pointsText.color = new Color32(255, 25, 25, 255);
+                else
+                    pointsText.color = new Color32(255, 128, 25, 255);
+        }
     }
 
     // ----- Tooltip Methods -----
@@ -72,5 +111,16 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         setTooltipText("");
+    }
+
+    // ----- Getter methods -----
+    public int getFullHealth()
+    {
+        return fullHealth;
+    }
+
+    public int getPointGoal()
+    {
+        return pointGoal;
     }
 }
