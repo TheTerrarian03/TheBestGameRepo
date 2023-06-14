@@ -13,7 +13,13 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TMP_Text tooltipText;
 
-    // ---- Customization options -----
+    // ----- Buttons to active when points met or health zero'd -----
+    [SerializeField]
+    private GameObject pointsReachedButton;
+    [SerializeField]
+    private GameObject healthZerodButton;
+
+    // ----- Customization options -----
     [SerializeField]
     private int pointGoal;
     [SerializeField]
@@ -65,7 +71,11 @@ public class UIManager : MonoBehaviour
                 if (amount == fullHealth)
                     healthText.color = new Color32(25, 255, 25, 255);
                 else if (amount < 0)
+                {
                     healthText.color = new Color32(255, 25, 25, 255);
+                    if (healthZerodButton != null)
+                        healthZerodButton.SetActive(true);
+                }
                 else
                     healthText.color = new Color32(255, 128, 25, 255);
         }
@@ -87,7 +97,11 @@ public class UIManager : MonoBehaviour
             // colors
             if (doColors)
                 if (amount >= pointGoal)
+                {
                     pointsText.color = new Color32(25, 255, 25, 255);
+                    if (pointsReachedButton != null)
+                        pointsReachedButton.SetActive(true);
+                }
                 else if (amount == 0)
                     pointsText.color = new Color32(255, 25, 25, 255);
                 else

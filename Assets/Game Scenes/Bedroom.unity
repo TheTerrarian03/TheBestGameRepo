@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 06f2a0ca416334526b214fb87713cbd6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1000,6 +1000,8 @@ MonoBehaviour:
   healthText: {fileID: 0}
   pointsText: {fileID: 0}
   tooltipText: {fileID: 1509297908}
+  pointsReachedButton: {fileID: 0}
+  healthZerodButton: {fileID: 0}
   pointGoal: 0
   fullHealth: 0
   doColors: 1
@@ -1329,7 +1331,7 @@ GameObject:
   - component: {fileID: 1971765553}
   - component: {fileID: 1971765556}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: LeaveTriggerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1427,6 +1429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerTag: Player
   sceneName: Kitchen
+  resetPointsOnSceneChange: 1
+  playerInfoManager: {fileID: 11400000, guid: 2cfd6673fe2a4434ea2fc4f2e5eebc7a, type: 2}
 --- !u!1001 &2055551646
 PrefabInstance:
   m_ObjectHideFlags: 0

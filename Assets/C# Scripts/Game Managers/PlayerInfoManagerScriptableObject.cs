@@ -54,6 +54,11 @@ public class PlayerInfoManagerScriptableObject : ScriptableObject
         pointChangeEvent.Invoke(points);
     }
 
+    public void resetPoints()
+    {
+        points = 0;
+    }
+
     public int getPoints()
     {
         return points;

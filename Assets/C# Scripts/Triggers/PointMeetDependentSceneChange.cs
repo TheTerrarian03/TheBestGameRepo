@@ -45,7 +45,8 @@ public class PointMeetDependentSceneChange : MonoBehaviour
     {
         if (other.CompareTag(triggerTag))
         {
-            SceneManager.LoadScene(newSceneName);
+            if (playerInfoManager.getPoints() >= uiManager.getPointGoal())
+                SceneManager.LoadScene(newSceneName);
         }
     }
 
@@ -53,7 +54,8 @@ public class PointMeetDependentSceneChange : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(triggerTag))
         {
-            SceneManager.LoadScene(newSceneName);
+            if (playerInfoManager.getPoints() >= uiManager.getPointGoal())
+                SceneManager.LoadScene(newSceneName);
         }
     }
 }
